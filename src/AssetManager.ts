@@ -6,7 +6,7 @@ import {
   SpineTexture,
   TextureAtlas,
 } from "@pixi/spine-pixi";
-import { CanvasSource, Texture } from "pixi.js";
+import { CanvasSource, Spritesheet, SpritesheetData, Texture } from "pixi.js";
 
 const audioContext =
   new (window.AudioContext || (window as any).webkitAudioContext)();
@@ -15,10 +15,17 @@ const audioContext =
 );
 
 class AssetManager {
-  private assets: Record<string, Texture | AudioBuffer | SkeletonData> = {};
+  private assets: Record<
+    string,
+    Texture | AudioBuffer | Spritesheet | SkeletonData
+  > = {};
 
   public async load(sources: {
     [id: string]: { type: "image" | "audio"; src: string } | {
+      type: "spritesheet";
+      src: string;
+      atlas: SpritesheetData;
+    } | {
       type: "spine";
       atlas: string;
       skel?: string;
@@ -34,6 +41,8 @@ class AssetManager {
         this.assets[id] = await this.loadImage(source.src);
       } else if (source.type === "audio") {
         this.assets[id] = await this.loadAudio(source.src);
+      } else if (source.type === "spritesheet") {
+        this.assets[id] = await this.loadSpritesheet(source.src, source.atlas);
       } else if (source.type === "spine") {
         this.assets[id] = await this.loadSpine(source);
       }
@@ -74,6 +83,11 @@ class AssetManager {
     const response = await fetch(src);
     const arrayBuffer = await response.arrayBuffer();
     return audioContext.decodeAudioData(arrayBuffer);
+  }
+
+  private async loadSpritesheet(src: string, atlas: SpritesheetData) {
+    const texture = await this.loadImage(src);
+    return new Spritesheet(texture, atlas);
   }
 
   private async loadSpine(source: {
@@ -139,6 +153,12 @@ class AssetManager {
     const response = await fetch(src);
     const arrayBuffer = await response.arrayBuffer();
     return new Uint8Array(arrayBuffer);
+  }
+
+  public get(
+    id: string,
+  ): Texture | AudioBuffer | Spritesheet | SkeletonData | undefined {
+    return this.assets[id];
   }
 }
 
