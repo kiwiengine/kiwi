@@ -130,6 +130,8 @@ new SpineAnimation(x: number, y: number, assetId: string, options: {
 - `get animation(): string` - 스파인 애니메이션의 애니메이션을 가져옵니다.
 - `remove(): void` - 스파인 애니메이션을 화면에서 제거합니다.
 
+Example: https://kiwiengine.github.io/kiwiengine/spine-test.html
+
 ### `Audio`
 
 ```typescript
