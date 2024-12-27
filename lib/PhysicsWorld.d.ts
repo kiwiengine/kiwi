@@ -1,5 +1,5 @@
 import GameObject from "./GameObject.js";
-import Rigidbody from "./Rigidbody.js";
+import Rigidbody from "./PhysicsObject.js";
 export default class PhysicsWorld extends GameObject<Rigidbody> {
     private engine;
     constructor(x: number, y: number, ...children: Rigidbody[]);

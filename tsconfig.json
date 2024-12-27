@@ -69,7 +69,8 @@
     ".vscode",
     "node_modules",
     "lib",
-    "docs"
+    "docs",
+    "webpack.config.ts"
   ],
   "ts-node": {
     "transpileOnly": true,

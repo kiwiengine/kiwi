@@ -24,6 +24,11 @@ const config: webpack.Configuration = {
     filename: "[name].js",
     path: path.resolve("docs"),
   },
+  plugins: [
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 1,
+    }),
+  ],
 };
 
 export default config;
