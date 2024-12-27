@@ -35,7 +35,7 @@ screen.add(new Sprite(0, 0, "cat"));
 ### `GameCanvas`
 
 ```typescript
-new GameCanvas(container: HTMLElement, width: number, height: number, ...objects: (GameObject | Sprite | SpriteAnimation | SpineAnimation)[]): GameCanvas
+new GameCanvas(container: HTMLElement, width: number, height: number, ...objects: GameObject[]): GameCanvas
 ```
 
 - `add(...objects: GameObject[]): void` - 게임 오브젝트를 추가합니다.
@@ -43,7 +43,7 @@ new GameCanvas(container: HTMLElement, width: number, height: number, ...objects
 ### `GameObject`
 
 ```typescript
-new GameObject(x: number, y: number, ...children: (GameObject | Sprite | SpriteAnimation | SpineAnimation)[]): GameObject
+new GameObject(x: number, y: number, ...children: GameObject[]): GameObject
 ```
 
 - `add(...children: GameObject[]): void` - 자식 게임 오브젝트를 추가합니다.
@@ -54,17 +54,34 @@ new GameObject(x: number, y: number, ...children: (GameObject | Sprite | SpriteA
 ```typescript
 await AssetManager.load(sources: {
   [id: string]:
-    | { type: "image" | "audio"; src: string }
-    | { type: "spritesheet"; src: string; atlas: SpritesheetData; }
-    | { type: "spine"; atlas: string; skel?: string; json?: string; png: Record<string, string> | string; };
+    { type: "image" | "audio", src: string } |
+    {
+      type: "spritesheet",
+      src: string,
+      atlas: {
+        frames: {
+          [frameId: string]: { x: number, y: number, w: number, h: number }
+        },
+        animations: {
+          [animationId: string]: string[]
+        }
+      }
+    } |
+    {
+      type: "spine",
+      atlas: string,
+      skel?: string,
+      json?: string,
+      png: Record<string, string> | string;
+    }
 }): void
 ```
 
-- `load(sources: { [id: string]: { type: "image" | "audio"; src: string } }): void` -
+- `load(sources: { [id: string]: { type: "image" | "audio", src: string } }): void` -
   이미지나 오디오를 로드합니다.
-- `load(sources: { [id: string]: { type: "spritesheet"; src: string; atlas: SpritesheetData; } }): void` -
+- `load(sources: { [id: string]: { type: "spritesheet", src: string, atlas: { frames: { [frameId: string]: { x: number, y: number, w: number, h: number } }, animations: { [animationId: string]: string[] } } } }): void` -
   스프라이트 시트를 로드합니다.
-- `load(sources: { [id: string]: { type: "spine"; atlas: string; skel?: string; json?: string; png: Record<string, string> | string; } }): void` -
+- `load(sources: { [id: string]: { type: "spine", atlas: string, skel?: string, json?: string, png: Record<string, string> | string } }): void` -
   스파인 애니메이션을 로드합니다.
 
 ### `InputManager`
