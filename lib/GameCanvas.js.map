@@ -1,1 +1,1 @@
-{"version":3,"file":"GameCanvas.js","sourceRoot":"","sources":["../src/GameCanvas.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAO,OAAO,UAAU;CAC9B"}
+{"version":3,"file":"GameCanvas.js","sourceRoot":"","sources":["../src/GameCanvas.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAO,OAAO,UAAU;IAC7B,YAAY,eAA4B;IACxC,CAAC;CACF"}

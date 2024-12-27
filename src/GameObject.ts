@@ -2,9 +2,15 @@ import { Container } from "pixi.js";
 import SpineAnimation from "./SpineAnimation.js";
 import Sprite from "./Sprite.js";
 
-export default class GameObject {
+export default class GameObject<
+  Child extends GameObject | Sprite | SpineAnimation =
+    | GameObject<any>
+    | Sprite
+    | SpineAnimation,
+> {
+  public pixiObject: Container;
   public parent: GameObject | undefined;
-  public children: (GameObject | Sprite | SpineAnimation)[] = [];
+  public children: Child[] = [];
   public globalTransform = {
     x: 0,
     y: 0,
@@ -14,81 +20,84 @@ export default class GameObject {
     alpha: 1,
   };
 
-  constructor(private container: Container) {}
+  constructor(x: number, y: number, ...children: Child[]) {
+    this.pixiObject = new Container({ x, y });
+    this.add(...children);
+  }
 
   public get x(): number {
-    return this.container.x;
+    return this.pixiObject.x;
   }
 
   public set x(x: number) {
-    this.container.x = x;
+    this.pixiObject.x = x;
   }
 
   public get y(): number {
-    return this.container.y;
+    return this.pixiObject.y;
   }
 
   public set y(y: number) {
-    this.container.y = y;
+    this.pixiObject.y = y;
   }
 
   public get zIndex(): number {
-    return this.container.zIndex;
+    return this.pixiObject.zIndex;
   }
 
   public set zIndex(zIndex: number) {
-    this.container.zIndex = zIndex;
+    this.pixiObject.zIndex = zIndex;
   }
 
   public get scaleX(): number {
-    return this.container.scale.x;
+    return this.pixiObject.scale.x;
   }
 
   public set scaleX(scaleX: number) {
-    this.container.scale.x = scaleX;
+    this.pixiObject.scale.x = scaleX;
   }
 
   public get scaleY(): number {
-    return this.container.scale.y;
+    return this.pixiObject.scale.y;
   }
 
   public set scaleY(scaleY: number) {
-    this.container.scale.y = scaleY;
+    this.pixiObject.scale.y = scaleY;
   }
 
   public get pivotX(): number {
-    return this.container.pivot.x;
+    return this.pixiObject.pivot.x;
   }
 
   public set pivotX(pivotX: number) {
-    this.container.pivot.x = pivotX;
+    this.pixiObject.pivot.x = pivotX;
   }
 
   public get pivotY(): number {
-    return this.container.pivot.y;
+    return this.pixiObject.pivot.y;
   }
 
   public set pivotY(pivotY: number) {
-    this.container.pivot.y = pivotY;
+    this.pixiObject.pivot.y = pivotY;
   }
 
   public get rotation(): number {
-    return this.container.rotation;
+    return this.pixiObject.rotation;
   }
 
   public set rotation(rotation: number) {
-    this.container.rotation = rotation;
+    this.pixiObject.rotation = rotation;
   }
 
   public get alpha(): number {
-    return this.container.alpha;
+    return this.pixiObject.alpha;
   }
 
   public set alpha(alpha: number) {
-    this.container.alpha = alpha;
+    this.pixiObject.alpha = alpha;
   }
 
-  public add(...children: GameObject[]): void {
+  public add(...children: Child[]): void {
     for (const child of children) {
       if (child.parent) {
         child.parent.children.splice(child.parent.children.indexOf(child), 1);
@@ -96,7 +105,7 @@ export default class GameObject {
 
       this.children.push(child);
       child.parent = this;
-      this.container.addChild(child.container);
+      this.pixiObject.addChild(child.pixiObject);
     }
   }
 
@@ -137,7 +146,7 @@ export default class GameObject {
   }
 
   public remove(): void {
-    this.container.destroy();
+    this.pixiObject.destroy();
     if (this.parent) {
       this.parent.children.splice(this.parent.children.indexOf(this), 1);
     }

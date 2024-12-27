@@ -7,9 +7,9 @@ import AssetManager from "./AssetManager.js";
 import GameObject from "./GameObject.js";
 
 export default class SpineAnimation {
+  public pixiObject: PixiSpine;
   public parent: GameObject | undefined;
 
-  private pixiSpine: PixiSpine;
   private _animation: string | undefined;
   private _skins: string[] = [];
 
@@ -25,7 +25,7 @@ export default class SpineAnimation {
   ) {
     const asset = AssetManager.get(assetId);
     if (asset instanceof SkeletonData) {
-      this.pixiSpine = new PixiSpine({ x, y, skeletonData: asset });
+      this.pixiObject = new PixiSpine({ x, y, skeletonData: asset });
       this.animation = this.options.animation;
       if (this.options.skins) this.skins = this.options.skins;
     } else {
@@ -36,13 +36,13 @@ export default class SpineAnimation {
   public set animation(animation: string | undefined) {
     this._animation = animation;
 
-    if (this.pixiSpine && animation) {
-      this.pixiSpine.state.setAnimation(
+    if (this.pixiObject && animation) {
+      this.pixiObject.state.setAnimation(
         0,
         animation,
         this.options.loop ?? true,
       );
-      this.pixiSpine.state.apply(this.pixiSpine.skeleton);
+      this.pixiObject.state.apply(this.pixiObject.skeleton);
     }
   }
 
@@ -53,14 +53,14 @@ export default class SpineAnimation {
   public set skins(skins: string[]) {
     this._skins = skins;
 
-    if (this.pixiSpine) {
+    if (this.pixiObject) {
       const newSkin = new SpineSkin("combined-skin");
       for (const skinName of skins) {
-        const skin = this.pixiSpine.skeleton.data.findSkin(skinName);
+        const skin = this.pixiObject.skeleton.data.findSkin(skinName);
         if (skin) newSkin.addSkin(skin);
       }
-      this.pixiSpine.skeleton.setSkin(newSkin);
-      this.pixiSpine.skeleton.setSlotsToSetupPose();
+      this.pixiObject.skeleton.setSkin(newSkin);
+      this.pixiObject.skeleton.setSlotsToSetupPose();
     }
   }
 

@@ -3,9 +3,8 @@ import AssetManager from "./AssetManager.js";
 import GameObject from "./GameObject.js";
 
 export default class Sprite {
+  public pixiObject: PixiSprite;
   public parent: GameObject | undefined;
-
-  private pixiSprite: PixiSprite;
 
   constructor(x: number, y: number, assetId: string, frame?: string) {
     const asset = AssetManager.get(assetId);
@@ -13,14 +12,14 @@ export default class Sprite {
       if (!frame) throw new Error("Frame not found");
       const texture = asset.textures[frame];
       if (!texture) throw new Error(`Failed to load texture: ${assetId}`);
-      this.pixiSprite = new PixiSprite({
+      this.pixiObject = new PixiSprite({
         x,
         y,
         texture,
         anchor: { x: 0.5, y: 0.5 },
       });
     } else if (asset instanceof Texture) {
-      this.pixiSprite = new PixiSprite({
+      this.pixiObject = new PixiSprite({
         x,
         y,
         texture: asset,
@@ -34,6 +33,6 @@ export default class Sprite {
   public _systemUpdate(): void {}
 
   public remove(): void {
-    this.pixiSprite.destroy();
+    this.pixiObject.destroy();
   }
 }

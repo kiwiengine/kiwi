@@ -1,5 +1,5 @@
 declare class InputManager {
-    onKeyDown(): void;
+    onKeyDown(handler: (key: string) => void): void;
 }
 declare const _default: InputManager;
 export default _default;

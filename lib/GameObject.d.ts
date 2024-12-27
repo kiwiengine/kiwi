@@ -1,10 +1,10 @@
 import { Container } from "pixi.js";
 import SpineAnimation from "./SpineAnimation.js";
 import Sprite from "./Sprite.js";
-export default class GameObject {
-    private container;
+export default class GameObject<Child extends GameObject | Sprite | SpineAnimation = GameObject<any> | Sprite | SpineAnimation> {
+    pixiObject: Container;
     parent: GameObject | undefined;
-    children: (GameObject | Sprite | SpineAnimation)[];
+    children: Child[];
     globalTransform: {
         x: number;
         y: number;
@@ -13,7 +13,7 @@ export default class GameObject {
         rotation: number;
         alpha: number;
     };
-    constructor(container: Container);
+    constructor(x: number, y: number, ...children: Child[]);
     get x(): number;
     set x(x: number);
     get y(): number;
@@ -32,7 +32,7 @@ export default class GameObject {
     set rotation(rotation: number);
     get alpha(): number;
     set alpha(alpha: number);
-    add(...children: GameObject[]): void;
+    add(...children: Child[]): void;
     update(deltaTime: number): void;
     _systemUpdate(deltaTime: number): void;
     remove(): void;

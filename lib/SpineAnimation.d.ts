@@ -1,8 +1,9 @@
+import { Spine as PixiSpine } from "@pixi/spine-pixi";
 import GameObject from "./GameObject.js";
 export default class SpineAnimation {
     private options;
+    pixiObject: PixiSpine;
     parent: GameObject | undefined;
-    private pixiSpine;
     private _animation;
     private _skins;
     constructor(x: number, y: number, assetId: string, options: {

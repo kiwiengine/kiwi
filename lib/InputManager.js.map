@@ -1,1 +1,1 @@
-{"version":3,"file":"InputManager.js","sourceRoot":"","sources":["../src/InputManager.ts"],"names":[],"mappings":"AAAA,MAAM,YAAY;IACT,SAAS;IAChB,CAAC;CACF;AAED,eAAe,IAAI,YAAY,EAAE,CAAC"}
+{"version":3,"file":"InputManager.js","sourceRoot":"","sources":["../src/InputManager.ts"],"names":[],"mappings":"AAAA,MAAM,YAAY;IACT,SAAS,CAAC,OAA8B;IAC/C,CAAC;CACF;AAED,eAAe,IAAI,YAAY,EAAE,CAAC"}

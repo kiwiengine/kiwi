@@ -10,5 +10,7 @@
     "matter-js": "^0.20.0",
     "pixi.js": "^8.6.6"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/matter-js": "^0.19.8"
+  }
 }

@@ -1,5 +1,5 @@
 class InputManager {
-  public onKeyDown() {
+  public onKeyDown(handler: (key: string) => void): void {
   }
 }
 
