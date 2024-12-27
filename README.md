@@ -115,8 +115,29 @@ await AssetManager.load(sources: {
 ### `InputManager`
 
 ```typescript
-TODO:
+InputManager.onKeyDown((key: string) => {
+  console.log(key);
+});
 ```
+
+- `onMouseDown(callback: (x: number, y: number) => void): void` - 마우스 버튼이
+  눌렸을 때 호출될 콜백을 등록합니다.
+- `onMouseMove(callback: (x: number, y: number) => void): void` - 마우스가
+  움직일 때 호출될 콜백을 등록합니다.
+- `onMouseUp(callback: (x: number, y: number) => void): void` - 마우스 버튼이
+  떼어졌을 때 호출될 콜백을 등록합니다.
+- `onTouchStart(callback: (x: number, y: number) => void): void` - 터치가 시작될
+  때 호출될 콜백을 등록합니다.
+- `onTouchMove(callback: (x: number, y: number) => void): void` - 터치가 움직일
+  때 호출될 콜백을 등록합니다.
+- `onTouchEnd(callback: (x: number, y: number) => void): void` - 터치가 끝날 때
+  호출될 콜백을 등록합니다.
+- `onKeyDown(callback: (key: string) => void): void` - 키가 눌렸을 때 호출될
+  콜백을 등록합니다.
+- `onKeyUp(callback: (key: string) => void): void` - 키가 떼어졌을 때 호출될
+  콜백을 등록합니다.
+- `onWindowResize(callback: (width: number, height: number) => void): void` -
+  창의 크기가 변경될 때 호출될 콜백을 등록합니다.
 
 ### `Sprite`
 

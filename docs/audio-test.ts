@@ -1,4 +1,4 @@
-import { AssetManager, Audio, GameScreen } from "../src";
+import { AssetManager, Audio, GameScreen, InputManager } from "../src";
 
 await AssetManager.load({
   bgm: { type: "audio", src: "assets/music.mp3" },
@@ -10,3 +10,8 @@ const screen = new GameScreen(container, 800, 600);
 
 // play bgm
 new Audio("bgm", 0.5).playLoop();
+
+// play sfx
+InputManager.onMouseDown(() => {
+  new Audio("sfx", 1).playOnce();
+});

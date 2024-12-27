@@ -27,12 +27,14 @@ export default class Audio {
   public playOnce(): this {
     this.source.loop = false;
     this.source.start(0, this.offset);
+    this.source.onended = () => this.remove();
     return this;
   }
 
   public playLoop(): this {
     this.source.loop = true;
     this.source.start(0, this.offset);
+    this.source.onended = null;
     return this;
   }
 
