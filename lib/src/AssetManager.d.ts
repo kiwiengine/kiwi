@@ -29,7 +29,7 @@ declare class AssetManager {
             json?: string;
             png: Record<string, string> | string;
         };
-    }): Promise<void>;
+    }, onProgress?: (percent: number) => void): Promise<void>;
     private loadImage;
     private loadAudio;
     private loadSpritesheet;

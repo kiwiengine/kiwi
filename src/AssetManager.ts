@@ -39,7 +39,10 @@ class AssetManager {
       json?: string;
       png: Record<string, string> | string;
     };
-  }) {
+  }, onProgress?: (percent: number) => void) {
+    const sourcesCount = Object.keys(sources).length;
+    let loadedCount = 0;
+
     const promises = Object.entries(sources).map(async ([id, source]) => {
       if (this.assets[id]) {
         throw new Error(`Asset already exists: ${id}`);
@@ -52,6 +55,10 @@ class AssetManager {
         this.assets[id] = await this.loadSpritesheet(source.src, source.atlas);
       } else if (source.type === "spine") {
         this.assets[id] = await this.loadSpine(source);
+      }
+      if (onProgress) {
+        loadedCount++;
+        onProgress(loadedCount / sourcesCount * 100);
       }
     });
     await Promise.all(promises);

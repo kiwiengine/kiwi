@@ -76,7 +76,7 @@ await AssetManager.load(sources: {
       json?: string,
       png: Record<string, string> | string;
     }
-}): void
+}, onProgress?: (percent: number) => void)): void
 ```
 
 - `load(sources: { [id: string]: { type: "image" | "audio", src: string } }): void` -
