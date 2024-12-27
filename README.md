@@ -50,6 +50,32 @@ new GameObject(x: number, y: number, ...children: GameObject[]): GameObject
   메소드입니다.
 - `add(...children: GameObject[]): void` - 자식 게임 오브젝트를 추가합니다.
 - `remove(): void` - 게임 오브젝트를 제거합니다.
+- `get parent(): GameObject | undefined` - 게임 오브젝트의 부모를 가져옵니다.
+- `get children(): GameObject[]` - 게임 오브젝트의 자식들을 가져옵니다.
+- `get x(): number` - 게임 오브젝트의 x 좌표를 가져옵니다.
+- `set x(x: number): void` - 게임 오브젝트의 x 좌표를 설정합니다.
+- `get y(): number` - 게임 오브젝트의 y 좌표를 가져옵니다.
+- `set y(y: number): void` - 게임 오브젝트의 y 좌표를 설정합니다.
+- `get drawingOrder(): number` - 게임 오브젝트의 그리기 순서를 가져옵니다.
+- `set drawingOrder(drawingOrder: number): void` - 게임 오브젝트의 그리기 순서를
+  설정합니다.
+- `get scale(): number` - 게임 오브젝트의 크기를 가져옵니다.
+- `set scale(scale: number): void` - 게임 오브젝트의 크기를 설정합니다.
+- `get scaleX(): number` - 게임 오브젝트의 x 축 크기를 가져옵니다.
+- `set scaleX(scaleX: number): void` - 게임 오브젝트의 x 축 크기를 설정합니다.
+- `get scaleY(): number` - 게임 오브젝트의 y 축 크기를 가져옵니다.
+- `set scaleY(scaleY: number): void` - 게임 오브젝트의 y 축 크기를 설정합니다.
+- `get pivotX(): number` - 게임 오브젝트의 x 축 회전 중심점을 가져옵니다.
+- `set pivotX(pivotX: number): void` - 게임 오브젝트의 x 축 회전 중심점을
+  설정합니다.
+- `get pivotY(): number` - 게임 오브젝트의 y 축 회전 중심점을 가져옵니다.
+- `set pivotY(pivotY: number): void` - 게임 오브젝트의 y 축 회전 중심점을
+  설정합니다.
+- `get rotation(): number` - 게임 오브젝트의 회전 각도를 가져옵니다.
+- `set rotation(rotation: number): void` - 게임 오브젝트의 회전 각도를
+  설정합니다.
+- `get alpha(): number` - 게임 오브젝트의 투명도를 가져옵니다.
+- `set alpha(alpha: number): void` - 게임 오브젝트의 투명도를 설정합니다.
 
 ### `AssetManager`
 

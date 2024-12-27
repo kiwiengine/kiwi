@@ -22,12 +22,12 @@ export default abstract class DrawingObject<C extends Container = Container> {
     this.pixiObject.y = y;
   }
 
-  public get zIndex(): number {
+  public get drawingOrder(): number {
     return this.pixiObject.zIndex;
   }
 
-  public set zIndex(zIndex: number) {
-    this.pixiObject.zIndex = zIndex;
+  public set drawingOrder(drawingOrder: number) {
+    this.pixiObject.zIndex = drawingOrder;
   }
 
   public get scaleX(): number {

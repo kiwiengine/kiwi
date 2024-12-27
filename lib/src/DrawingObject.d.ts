@@ -8,8 +8,8 @@ export default abstract class DrawingObject<C extends Container = Container> {
     set x(x: number);
     get y(): number;
     set y(y: number);
-    get zIndex(): number;
-    set zIndex(zIndex: number);
+    get drawingOrder(): number;
+    set drawingOrder(drawingOrder: number);
     get scaleX(): number;
     set scaleX(scaleX: number);
     get scaleY(): number;
