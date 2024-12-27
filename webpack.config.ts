@@ -5,6 +5,7 @@ const config: webpack.Configuration = {
   entry: {
     "sprite-test": "./docs/sprite-test.ts",
     "sprite-animation-test": "./docs/sprite-animation-test.ts",
+    "spine-test": "./docs/spine-test.ts",
   },
   module: {
     rules: [

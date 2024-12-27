@@ -6,25 +6,36 @@ import {
 import AssetManager from "./AssetManager.js";
 import DrawingObject from "./DrawingObject.js";
 
+interface SpineAnimationOptions {
+  animation: string;
+  skins?: string[];
+  loop?: boolean;
+  onAnimationEnd?: (animation: string) => void;
+}
+
 export default class SpineAnimation extends DrawingObject<PixiSpine> {
   private _animation: string | undefined;
   private _skins: string[] = [];
+  private options: SpineAnimationOptions;
 
   constructor(
     x: number,
     y: number,
     assetId: string,
-    private options: {
-      animation: string;
-      skins?: string[];
-      loop?: boolean;
-    },
+    options: SpineAnimationOptions,
   ) {
     const asset = AssetManager.get(assetId);
     if (asset instanceof SkeletonData) {
       super(new PixiSpine({ x, y, skeletonData: asset }));
-      this.animation = this.options.animation;
-      if (this.options.skins) this.skins = this.options.skins;
+
+      this.options = options;
+      this.animation = options.animation;
+      if (options.skins) this.skins = options.skins;
+
+      this.pixiObject.state.addListener({
+        complete: (entry) =>
+          this.options.onAnimationEnd?.(entry.animation?.name ?? ""),
+      });
     } else {
       throw new Error(`Invalid asset type: ${assetId}`);
     }
