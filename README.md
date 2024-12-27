@@ -236,3 +236,7 @@ Example: https://kiwiengine.github.io/kiwiengine/physics-test.html
 ## 라이센스
 
 [MIT](LICENSE)
+
+## 피드백
+
+피드백은 [이슈](https://github.com/kiwiengine/kiwiengine/issues)에 남겨주세요.
