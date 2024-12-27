@@ -54,8 +54,15 @@ screen.add(new Sprite(0, 0, "cat"));
 
 ### `Sprite`
 
+스프라이트는 이미지를 화면에 표시하는 게임 오브젝트입니다.
+
 ```typescript
+new Sprite(x: number, y: number, assetId: string): Sprite
 ```
+
+- `remove(): void` - 스프라이트를 화면에서 제거합니다.
+
+Example: https://kiwiengine.github.io/kiwiengine/sprite-test.html
 
 ### `SpriteAnimation`
 
