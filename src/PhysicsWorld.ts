@@ -9,11 +9,11 @@ export default class PhysicsWorld extends GameObject<Rigidbody> {
     super(x, y, ...children);
   }
 
-  public add(...children: Rigidbody[]): void {
-    for (const child of children) {
+  public add(...rigidbodies: Rigidbody[]): void {
+    for (const child of rigidbodies) {
       Matter.Composite.add(this.engine.world, child.rigidBody);
     }
-    super.add(...children);
+    super.add(...rigidbodies);
   }
 
   public _systemUpdate(deltaTime: number): void {
