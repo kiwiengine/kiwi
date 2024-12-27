@@ -6,6 +6,7 @@ const config: webpack.Configuration = {
     "sprite-test": "./docs/sprite-test.ts",
     "sprite-animation-test": "./docs/sprite-animation-test.ts",
     "spine-test": "./docs/spine-test.ts",
+    "audio-test": "./docs/audio-test.ts",
   },
   module: {
     rules: [

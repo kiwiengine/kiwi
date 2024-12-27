@@ -1,5 +1,6 @@
 import { SkeletonData } from "@pixi/spine-pixi";
 import { Spritesheet, Texture } from "pixi.js";
+export declare const audioContext: AudioContext;
 declare class AssetManager {
     private assets;
     load(sources: {

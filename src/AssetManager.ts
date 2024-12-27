@@ -8,7 +8,7 @@ import {
 } from "@pixi/spine-pixi";
 import { CanvasSource, Spritesheet, SpritesheetData, Texture } from "pixi.js";
 
-const audioContext =
+export const audioContext =
   new (window.AudioContext || (window as any).webkitAudioContext)();
 ["mousedown", "touchend"].forEach((event) =>
   window.addEventListener(event, () => audioContext.resume())

@@ -163,8 +163,17 @@ Example: https://kiwiengine.github.io/kiwiengine/spine-test.html
 ### `Audio`
 
 ```typescript
-TODO:
+new Audio(assetId: string, volume: number): Audio
 ```
+
+- `playOnce(): void` - 오디오를 한 번 재생합니다.
+- `playLoop(): void` - 오디오를 반복 재생합니다.
+- `stop(): void` - 오디오를 정지합니다.
+- `pause(): void` - 오디오를 일시 정지합니다.
+- `resume(): void` - 오디오를 재개합니다.
+- `set volume(volume: number): void` - 오디오의 볼륨을 설정합니다.
+- `get volume(): number` - 오디오의 볼륨을 가져옵니다.
+- `remove(): void` - 오디오를 제거합니다.
 
 ### `PhysicsWorld`
 
