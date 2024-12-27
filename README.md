@@ -46,6 +46,8 @@ new GameCanvas(container: HTMLElement, width: number, height: number, ...objects
 new GameObject(x: number, y: number, ...children: GameObject[]): GameObject
 ```
 
+- `update(deltaTime: number): void` - 개발자가 게임 로직을 구현할 수 있는
+  메소드입니다.
 - `add(...children: GameObject[]): void` - 자식 게임 오브젝트를 추가합니다.
 - `remove(): void` - 게임 오브젝트를 제거합니다.
 
