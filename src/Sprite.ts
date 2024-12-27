@@ -1,8 +1,6 @@
-import { Container } from "pixi.js";
-import GameNode from "./GameNode.js";
-
-export default class Sprite extends GameNode {
+export default class Sprite {
   constructor(x: number, y: number, assetId: string) {
-    super(new Container({ x, y }));
   }
+
+  public _systemUpdate(): void {}
 }
