@@ -6,12 +6,12 @@ export default class GameScreen {
   private rootObject: GameObject;
 
   constructor(
-    private canvasContainer: HTMLElement,
+    private container: HTMLElement,
     private width: number,
     private height: number,
-    ...children: GameObjectChild[]
+    ...objects: GameObjectChild[]
   ) {
-    this.rootObject = new GameObject(width / 2, height / 2, ...children);
+    this.rootObject = new GameObject(width / 2, height / 2, ...objects);
     this.createRenderer();
   }
 
@@ -23,11 +23,11 @@ export default class GameScreen {
     });
     this.renderer.canvas.style.display = "block";
     this.renderer.canvas.style.touchAction = "auto";
-    this.canvasContainer.appendChild(this.renderer.canvas);
+    this.container.appendChild(this.renderer.canvas);
     this.renderer.render(this.rootObject.pixiObject);
   }
 
-  public add(...children: GameObjectChild[]): void {
-    this.rootObject.add(...children);
+  public add(...objects: GameObjectChild[]): void {
+    this.rootObject.add(...objects);
   }
 }

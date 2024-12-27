@@ -1,7 +1,8 @@
 import { Container } from "pixi.js";
 import SpineAnimation from "./SpineAnimation.js";
 import Sprite from "./Sprite.js";
-export type GameObjectChild = GameObject | Sprite | SpineAnimation;
+import SpriteAnimation from "./SpriteAnimation.js";
+export type GameObjectChild = GameObject | Sprite | SpriteAnimation | SpineAnimation;
 export default class GameObject<Child extends GameObjectChild = GameObjectChild> {
     pixiObject: Container;
     parent: GameObject | undefined;

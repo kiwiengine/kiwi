@@ -1,12 +1,12 @@
 import { GameObjectChild } from "./GameObject.js";
 export default class GameScreen {
-    private canvasContainer;
+    private container;
     private width;
     private height;
     private renderer;
     private rootObject;
-    constructor(canvasContainer: HTMLElement, width: number, height: number, ...children: GameObjectChild[]);
+    constructor(container: HTMLElement, width: number, height: number, ...objects: GameObjectChild[]);
     private createRenderer;
-    add(...children: GameObjectChild[]): void;
+    add(...objects: GameObjectChild[]): void;
 }
 //# sourceMappingURL=GameScreen.d.ts.map
