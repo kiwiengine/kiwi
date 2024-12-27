@@ -89,6 +89,8 @@ new GameObject(x: number, y: number, ...children: GameObject[]): GameObject
   충돌했는지 확인합니다.
 - `drawColliders(color: number): void` - 게임 오브젝트의 충돌체를 그립니다.
 
+Example: https://kiwiengine.github.io/kiwiengine/collision-test.html
+
 ### `AssetManager`
 
 ```typescript
@@ -181,6 +183,8 @@ new Audio(assetId: string, volume: number): Audio
 - `get volume(): number` - 오디오의 볼륨을 가져옵니다.
 - `remove(): void` - 오디오를 제거합니다.
 
+Example: https://kiwiengine.github.io/kiwiengine/audio-test.html
+
 ### `InputManager`
 
 ```typescript
@@ -211,14 +215,23 @@ InputManager.onKeyDown((key: string) => {
 ### `PhysicsWorld`
 
 ```typescript
-TODO:
+new PhysicsWorld(x: number, y: number, objects: PhysicsObject[]): PhysicsWorld
 ```
+
+Example: https://kiwiengine.github.io/kiwiengine/physics-test.html
 
 ### `PhysicsObject`
 
 ```typescript
-TODO:
+new PhysicsObject(x: number, y: number, rigidbody: RigidBody, ...children: GameObject[]): PhysicsObject
 ```
+
+- `set isStatic(isStatic: boolean): void` - 물리 오브젝트의 정적 여부를
+  설정합니다.
+- `get isStatic(): boolean` - 물리 오브젝트의 정적 여부를 가져옵니다.
+- `applyForce(x: number, y: number): void` - 물리 오브젝트에 힘을 가합니다.
+
+Example: https://kiwiengine.github.io/kiwiengine/physics-test.html
 
 ## 라이센스
 

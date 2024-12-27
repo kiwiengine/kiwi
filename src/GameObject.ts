@@ -141,8 +141,6 @@ export default class GameObject<
   public update(deltaTime: number): void {}
 
   public _systemUpdate(deltaTime: number): void {
-    this.update(deltaTime);
-
     if (this.parent) {
       const pt = this.parent.globalTransform;
       const rx = this.x * pt.scaleX;
@@ -168,6 +166,8 @@ export default class GameObject<
       this.globalTransform.rotation = pt.rotation + this.rotation;
       this.globalTransform.alpha = pt.alpha * this.alpha;
     }
+
+    this.update(deltaTime);
 
     for (const child of this.children) {
       child._systemUpdate(deltaTime);

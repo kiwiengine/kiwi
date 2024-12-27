@@ -27,8 +27,8 @@ class Cat extends GameObject {
 const cat = new Cat(0, 0);
 
 InputManager.onMouseMove((mouseX, mouseY) => {
-  const x = mouseX - screen.left - screen.width / 2;
-  const y = mouseY - screen.top - screen.height / 2;
+  const x = mouseX + window.scrollX - screen.left - screen.width / 2;
+  const y = mouseY + window.scrollY - screen.top - screen.height / 2;
 
   if (cat.checkCollisionWithPoint(x, y)) {
     cat.drawColliders(0xff0000);

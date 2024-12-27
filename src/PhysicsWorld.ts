@@ -1,19 +1,20 @@
 import Matter from "matter-js";
 import GameObject from "./GameObject.js";
-import Rigidbody from "./PhysicsObject.js";
+import PhysicsObject from "./PhysicsObject.js";
 
-export default class PhysicsWorld extends GameObject<Rigidbody> {
+export default class PhysicsWorld extends GameObject<PhysicsObject> {
   private engine = Matter.Engine.create();
 
-  constructor(x: number, y: number, ...children: Rigidbody[]) {
-    super(x, y, ...children);
+  constructor(x: number, y: number, ...objects: PhysicsObject[]) {
+    super(x, y);
+    this.add(...objects);
   }
 
-  public add(...rigidbodies: Rigidbody[]): void {
-    for (const child of rigidbodies) {
+  public add(...objects: PhysicsObject[]): void {
+    for (const child of objects) {
       Matter.Composite.add(this.engine.world, child.matterBody);
     }
-    super.add(...rigidbodies);
+    super.add(...objects);
   }
 
   public _systemUpdate(deltaTime: number): void {
