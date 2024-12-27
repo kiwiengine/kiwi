@@ -3,7 +3,7 @@ import webpack from "webpack";
 
 const config: webpack.Configuration = {
   entry: {
-    "sprite-test": "./test/sprite-test.ts",
+    "sprite-test": "./docs/sprite-test.ts",
   },
   module: {
     rules: [
@@ -22,7 +22,7 @@ const config: webpack.Configuration = {
   },
   output: {
     filename: "[name].js",
-    path: path.resolve("test"),
+    path: path.resolve("docs"),
   },
 };
 

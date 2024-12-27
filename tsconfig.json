@@ -63,21 +63,18 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true, /* Disallow inconsistently-cased references to the same file. */
     "resolveJsonModule": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
   "exclude": [
-    "lib",
-    "node_modules",
     ".vscode",
-    "test-src",
-    "old",
-    "test",
-    "legacy"
+    "node_modules",
+    "lib",
+    "docs"
   ],
   "ts-node": {
     "transpileOnly": true,
     "moduleTypes": {
-      "webpack.config.ts": "cjs",
+      "webpack.config.ts": "cjs"
     }
   }
 }
