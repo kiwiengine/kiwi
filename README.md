@@ -87,6 +87,7 @@ await AssetManager.load(sources: {
 ### `InputManager`
 
 ```typescript
+TODO:
 ```
 
 ### `Sprite`
@@ -132,16 +133,19 @@ new SpineAnimation(x: number, y: number, assetId: string, options: {
 ### `Audio`
 
 ```typescript
+TODO:
 ```
 
 ### `PhysicsWorld`
 
 ```typescript
+TODO:
 ```
 
 ### `PhysicsObject`
 
 ```typescript
+TODO:
 ```
 
 ## 라이센스
