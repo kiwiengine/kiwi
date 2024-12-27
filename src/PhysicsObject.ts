@@ -1,26 +1,30 @@
 import Matter from "matter-js";
 import GameObject from "./GameObject.js";
 
+interface RectangleRigidbody {
+  type: "rectangle";
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  isStatic?: boolean;
+}
+
+interface CircleRigidbody {
+  type: "circle";
+  x: number;
+  y: number;
+  radius: number;
+  isStatic?: boolean;
+}
+
 export default class PhysicsObject extends GameObject {
   public matterBody: Matter.Body;
 
   constructor(
     x: number,
     y: number,
-    rigidbody: {
-      type: "rectangle";
-      x: number;
-      y: number;
-      width: number;
-      height: number;
-      isStatic?: boolean;
-    } | {
-      type: "circle";
-      x: number;
-      y: number;
-      radius: number;
-      isStatic?: boolean;
-    },
+    rigidbody: RectangleRigidbody | CircleRigidbody,
   ) {
     super(x, y);
     if (rigidbody.type === "rectangle") {

@@ -1,8 +1,8 @@
 import { GameObjectChild } from "./GameObject.js";
 export default class GameScreen {
     private container;
-    private width;
-    private height;
+    width: number;
+    height: number;
     private renderer;
     private rootObject;
     private animationInterval;
@@ -15,6 +15,8 @@ export default class GameScreen {
     private accumulatedTime;
     private animate;
     add(...objects: GameObjectChild[]): void;
+    get left(): number;
+    get top(): number;
     remove(): void;
 }
 //# sourceMappingURL=GameScreen.d.ts.map

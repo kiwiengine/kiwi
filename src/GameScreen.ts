@@ -11,8 +11,8 @@ export default class GameScreen {
 
   constructor(
     private container: HTMLElement,
-    private width: number,
-    private height: number,
+    public width: number,
+    public height: number,
     ...objects: GameObjectChild[]
   ) {
     this.rootObject = new GameObject(width / 2, height / 2, ...objects);
@@ -62,6 +62,14 @@ export default class GameScreen {
 
   public add(...objects: GameObjectChild[]): void {
     this.rootObject.add(...objects);
+  }
+
+  public get left(): number {
+    return this.renderer?.canvas.offsetLeft ?? 0;
+  }
+
+  public get top(): number {
+    return this.renderer?.canvas.offsetTop ?? 0;
   }
 
   public remove(): void {

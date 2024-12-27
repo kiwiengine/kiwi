@@ -39,6 +39,11 @@ new GameCanvas(container: HTMLElement, width: number, height: number, ...objects
 ```
 
 - `add(...objects: GameObject[]): void` - 게임 오브젝트를 추가합니다.
+- `remove(): void` - 게임 캔버스를 제거합니다.
+- `get width(): number` - 게임 캔버스의 너비를 가져옵니다.
+- `get height(): number` - 게임 캔버스의 높이를 가져옵니다.
+- `get left(): number` - 게임 캔버스의 왼쪽 좌표를 가져옵니다.
+- `get top(): number` - 게임 캔버스의 위쪽 좌표를 가져옵니다.
 
 ### `GameObject`
 
@@ -76,6 +81,13 @@ new GameObject(x: number, y: number, ...children: GameObject[]): GameObject
   설정합니다.
 - `get alpha(): number` - 게임 오브젝트의 투명도를 가져옵니다.
 - `set alpha(alpha: number): void` - 게임 오브젝트의 투명도를 설정합니다.
+- `addCollider(...colliders: Collider[]): void` - 게임 오브젝트에 충돌체를
+  추가합니다.
+- `checkCollisionWith(other: GameObject): boolean` - 다른 게임 오브젝트와
+  충돌했는지 확인합니다.
+- `checkCollisionWithPoint(x: number, y: number): boolean` - 지정한 좌표와
+  충돌했는지 확인합니다.
+- `drawColliders(color: number): void` - 게임 오브젝트의 충돌체를 그립니다.
 
 ### `AssetManager`
 
@@ -111,33 +123,6 @@ await AssetManager.load(sources: {
   스프라이트 시트를 로드합니다.
 - `load(sources: { [id: string]: { type: "spine", atlas: string, skel?: string, json?: string, png: Record<string, string> | string } }): void` -
   스파인 애니메이션을 로드합니다.
-
-### `InputManager`
-
-```typescript
-InputManager.onKeyDown((key: string) => {
-  console.log(key);
-});
-```
-
-- `onMouseDown(callback: (x: number, y: number) => void): void` - 마우스 버튼이
-  눌렸을 때 호출될 콜백을 등록합니다.
-- `onMouseMove(callback: (x: number, y: number) => void): void` - 마우스가
-  움직일 때 호출될 콜백을 등록합니다.
-- `onMouseUp(callback: (x: number, y: number) => void): void` - 마우스 버튼이
-  떼어졌을 때 호출될 콜백을 등록합니다.
-- `onTouchStart(callback: (x: number, y: number) => void): void` - 터치가 시작될
-  때 호출될 콜백을 등록합니다.
-- `onTouchMove(callback: (x: number, y: number) => void): void` - 터치가 움직일
-  때 호출될 콜백을 등록합니다.
-- `onTouchEnd(callback: (x: number, y: number) => void): void` - 터치가 끝날 때
-  호출될 콜백을 등록합니다.
-- `onKeyDown(callback: (key: string) => void): void` - 키가 눌렸을 때 호출될
-  콜백을 등록합니다.
-- `onKeyUp(callback: (key: string) => void): void` - 키가 떼어졌을 때 호출될
-  콜백을 등록합니다.
-- `onWindowResize(callback: (width: number, height: number) => void): void` -
-  창의 크기가 변경될 때 호출될 콜백을 등록합니다.
 
 ### `Sprite`
 
@@ -195,6 +180,33 @@ new Audio(assetId: string, volume: number): Audio
 - `set volume(volume: number): void` - 오디오의 볼륨을 설정합니다.
 - `get volume(): number` - 오디오의 볼륨을 가져옵니다.
 - `remove(): void` - 오디오를 제거합니다.
+
+### `InputManager`
+
+```typescript
+InputManager.onKeyDown((key: string) => {
+  console.log(key);
+});
+```
+
+- `onMouseDown(callback: (x: number, y: number) => void): void` - 마우스 버튼이
+  눌렸을 때 호출될 콜백을 등록합니다.
+- `onMouseMove(callback: (x: number, y: number) => void): void` - 마우스가
+  움직일 때 호출될 콜백을 등록합니다.
+- `onMouseUp(callback: (x: number, y: number) => void): void` - 마우스 버튼이
+  떼어졌을 때 호출될 콜백을 등록합니다.
+- `onTouchStart(callback: (x: number, y: number) => void): void` - 터치가 시작될
+  때 호출될 콜백을 등록합니다.
+- `onTouchMove(callback: (x: number, y: number) => void): void` - 터치가 움직일
+  때 호출될 콜백을 등록합니다.
+- `onTouchEnd(callback: (x: number, y: number) => void): void` - 터치가 끝날 때
+  호출될 콜백을 등록합니다.
+- `onKeyDown(callback: (key: string) => void): void` - 키가 눌렸을 때 호출될
+  콜백을 등록합니다.
+- `onKeyUp(callback: (key: string) => void): void` - 키가 떼어졌을 때 호출될
+  콜백을 등록합니다.
+- `onWindowResize(callback: (width: number, height: number) => void): void` -
+  창의 크기가 변경될 때 호출될 콜백을 등록합니다.
 
 ### `PhysicsWorld`
 
