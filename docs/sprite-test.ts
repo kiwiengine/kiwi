@@ -1,8 +1,7 @@
-import { AssetManager, GameCanvas, Sprite } from "../src";
+import { AssetManager, GameScreen, Sprite } from "../src";
 
 await AssetManager.load({ cat: { type: "image", src: "assets/cat.png" } });
 
-const canvasContainer = document.getElementById("game-container");
-if (!canvasContainer) throw new Error("Game container not found");
-
-new GameCanvas(canvasContainer, 800, 600, new Sprite(0, 0, "cat"));
+const gameContainer = document.getElementById("game-container")!;
+const screen = new GameScreen(gameContainer, 800, 600);
+screen.add(new Sprite(0, 0, "cat"));
