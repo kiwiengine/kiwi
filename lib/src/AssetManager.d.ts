@@ -1,5 +1,5 @@
 import { SkeletonData } from "@pixi/spine-pixi";
-import { Spritesheet, SpritesheetData, Texture } from "pixi.js";
+import { Spritesheet, Texture } from "pixi.js";
 declare class AssetManager {
     private assets;
     load(sources: {
@@ -9,7 +9,19 @@ declare class AssetManager {
         } | {
             type: "spritesheet";
             src: string;
-            atlas: SpritesheetData;
+            atlas: {
+                frames: {
+                    [frameId: string]: {
+                        x: number;
+                        y: number;
+                        w: number;
+                        h: number;
+                    };
+                };
+                animations: {
+                    [animationId: string]: string[];
+                };
+            };
         } | {
             type: "spine";
             atlas: string;

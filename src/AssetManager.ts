@@ -24,7 +24,14 @@ class AssetManager {
     [id: string]: { type: "image" | "audio"; src: string } | {
       type: "spritesheet";
       src: string;
-      atlas: SpritesheetData;
+      atlas: {
+        frames: {
+          [frameId: string]: { x: number; y: number; w: number; h: number };
+        };
+        animations: {
+          [animationId: string]: string[];
+        };
+      };
     } | {
       type: "spine";
       atlas: string;
@@ -85,9 +92,24 @@ class AssetManager {
     return audioContext.decodeAudioData(arrayBuffer);
   }
 
-  private async loadSpritesheet(src: string, atlas: SpritesheetData) {
+  private async loadSpritesheet(src: string, atlas: {
+    frames: {
+      [frameId: string]: { x: number; y: number; w: number; h: number };
+    };
+    animations: {
+      [animationId: string]: string[];
+    };
+  }) {
+    const spritesheetData: SpritesheetData = {
+      frames: {},
+      meta: { scale: 1 },
+      animations: atlas.animations,
+    };
+    for (const [frameId, frameData] of Object.entries(atlas.frames)) {
+      spritesheetData.frames[frameId] = { frame: frameData };
+    }
     const texture = await this.loadImage(src);
-    return new Spritesheet(texture, atlas);
+    return new Spritesheet(texture, spritesheetData);
   }
 
   private async loadSpine(source: {
