@@ -1,0 +1,14 @@
+{
+  "name": "kiwiengine",
+  "homepage": "https://github.com/kiwiengine/kiwi",
+  "version": "0.0.1",
+  "type": "module",
+  "types": "./lib/index.d.ts",
+  "main": "./lib/index.js",
+  "dependencies": {
+    "@pixi/spine-pixi": "^2.1.1",
+    "matter-js": "^0.20.0",
+    "pixi.js": "^8.6.6"
+  },
+  "devDependencies": {}
+}
