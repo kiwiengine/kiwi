@@ -114,7 +114,20 @@ Example: https://kiwiengine.github.io/kiwiengine/sprite-animation-test.html
 ### `SpineAnimation`
 
 ```typescript
+new SpineAnimation(x: number, y: number, assetId: string, options: {
+  animation: string,
+  skins?: string[],
+  loop?: boolean,
+  onAnimationEnd?: (animation: string) => void
+}): SpineAnimation
 ```
+
+- `set skin(skin: string): void` - 스파인 애니메이션의 스킨을 설정합니다.
+- `get skin(): string` - 스파인 애니메이션의 스킨을 가져옵니다.
+- `set animation(animation: string): void` - 스파인 애니메이션의 애니메이션을
+  설정합니다.
+- `get animation(): string` - 스파인 애니메이션의 애니메이션을 가져옵니다.
+- `remove(): void` - 스파인 애니메이션을 화면에서 제거합니다.
 
 ### `Audio`
 
