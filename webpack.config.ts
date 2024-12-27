@@ -4,6 +4,7 @@ import webpack from "webpack";
 const config: webpack.Configuration = {
   entry: {
     "sprite-test": "./docs/sprite-test.ts",
+    "sprite-animation-test": "./docs/sprite-animation-test.ts",
   },
   module: {
     rules: [
@@ -23,12 +24,8 @@ const config: webpack.Configuration = {
   output: {
     filename: "[name].js",
     path: path.resolve("docs"),
+    chunkFormat: false,
   },
-  plugins: [
-    new webpack.optimize.LimitChunkCountPlugin({
-      maxChunks: 1,
-    }),
-  ],
 };
 
 export default config;

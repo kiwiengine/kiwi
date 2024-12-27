@@ -1,4 +1,5 @@
 import { Container } from "pixi.js";
+import DrawingObject from "./DrawingObject.js";
 import SpineAnimation from "./SpineAnimation.js";
 import Sprite from "./Sprite.js";
 import SpriteAnimation from "./SpriteAnimation.js";
@@ -11,9 +12,7 @@ export type GameObjectChild =
 
 export default class GameObject<
   Child extends GameObjectChild = GameObjectChild,
-> {
-  public pixiObject: Container;
-  public parent: GameObject | undefined;
+> extends DrawingObject<Container> {
   public children: Child[] = [];
   public globalTransform = {
     x: 0,
@@ -25,80 +24,8 @@ export default class GameObject<
   };
 
   constructor(x: number, y: number, ...children: Child[]) {
-    this.pixiObject = new Container({ x, y });
+    super(new Container({ x, y }));
     this.add(...children);
-  }
-
-  public get x(): number {
-    return this.pixiObject.x;
-  }
-
-  public set x(x: number) {
-    this.pixiObject.x = x;
-  }
-
-  public get y(): number {
-    return this.pixiObject.y;
-  }
-
-  public set y(y: number) {
-    this.pixiObject.y = y;
-  }
-
-  public get zIndex(): number {
-    return this.pixiObject.zIndex;
-  }
-
-  public set zIndex(zIndex: number) {
-    this.pixiObject.zIndex = zIndex;
-  }
-
-  public get scaleX(): number {
-    return this.pixiObject.scale.x;
-  }
-
-  public set scaleX(scaleX: number) {
-    this.pixiObject.scale.x = scaleX;
-  }
-
-  public get scaleY(): number {
-    return this.pixiObject.scale.y;
-  }
-
-  public set scaleY(scaleY: number) {
-    this.pixiObject.scale.y = scaleY;
-  }
-
-  public get pivotX(): number {
-    return this.pixiObject.pivot.x;
-  }
-
-  public set pivotX(pivotX: number) {
-    this.pixiObject.pivot.x = pivotX;
-  }
-
-  public get pivotY(): number {
-    return this.pixiObject.pivot.y;
-  }
-
-  public set pivotY(pivotY: number) {
-    this.pixiObject.pivot.y = pivotY;
-  }
-
-  public get rotation(): number {
-    return this.pixiObject.rotation;
-  }
-
-  public set rotation(rotation: number) {
-    this.pixiObject.rotation = rotation;
-  }
-
-  public get alpha(): number {
-    return this.pixiObject.alpha;
-  }
-
-  public set alpha(alpha: number) {
-    this.pixiObject.alpha = alpha;
   }
 
   public add(...children: Child[]): void {
@@ -150,7 +77,7 @@ export default class GameObject<
   }
 
   public remove(): void {
-    this.pixiObject.destroy();
+    super.remove();
     if (this.parent) {
       this.parent.children.splice(this.parent.children.indexOf(this), 1);
     }

@@ -4,12 +4,9 @@ import {
   Spine as PixiSpine,
 } from "@pixi/spine-pixi";
 import AssetManager from "./AssetManager.js";
-import GameObject from "./GameObject.js";
+import DrawingObject from "./DrawingObject.js";
 
-export default class SpineAnimation {
-  public pixiObject: PixiSpine;
-  public parent: GameObject | undefined;
-
+export default class SpineAnimation extends DrawingObject<PixiSpine> {
   private _animation: string | undefined;
   private _skins: string[] = [];
 
@@ -25,7 +22,7 @@ export default class SpineAnimation {
   ) {
     const asset = AssetManager.get(assetId);
     if (asset instanceof SkeletonData) {
-      this.pixiObject = new PixiSpine({ x, y, skeletonData: asset });
+      super(new PixiSpine({ x, y, skeletonData: asset }));
       this.animation = this.options.animation;
       if (this.options.skins) this.skins = this.options.skins;
     } else {
@@ -67,6 +64,4 @@ export default class SpineAnimation {
   public get skins(): string[] {
     return this._skins;
   }
-
-  public _systemUpdate(): void {}
 }

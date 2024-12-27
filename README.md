@@ -104,7 +104,12 @@ Example: https://kiwiengine.github.io/kiwiengine/sprite-test.html
 ### `SpriteAnimation`
 
 ```typescript
+new SpriteAnimation(x: number, y: number, assetId: string, animation: string, fps: number): SpriteAnimation
 ```
+
+- `remove(): void` - 스프라이트 애니메이션을 화면에서 제거합니다.
+
+Example: https://kiwiengine.github.io/kiwiengine/sprite-animation-test.html
 
 ### `SpineAnimation`
 

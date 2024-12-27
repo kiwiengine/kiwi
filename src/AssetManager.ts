@@ -109,7 +109,9 @@ class AssetManager {
       spritesheetData.frames[frameId] = { frame: frameData };
     }
     const texture = await this.loadImage(src);
-    return new Spritesheet(texture, spritesheetData);
+    const spritesheet = new Spritesheet(texture, spritesheetData);
+    await spritesheet.parse();
+    return spritesheet;
   }
 
   private async loadSpine(source: {
