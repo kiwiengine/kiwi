@@ -1,8 +1,8 @@
-# 키위엔진
+# KiwiEngine
 
-키위엔진은 심플하고 가벼운 웹 게임 엔진입니다.
+KiwiEngine is a simple and lightweight web game engine.
 
-## 설치
+## Installation
 
 ### npm
 
@@ -16,7 +16,7 @@ npm install kiwiengine
 yarn add kiwiengine
 ```
 
-## 사용법
+## Usage
 
 ```typescript
 import { AssetManager, GameCanvas, Sprite } from "kiwiengine";
@@ -38,12 +38,12 @@ screen.add(new Sprite(0, 0, "cat"));
 new GameCanvas(container: HTMLElement, width: number, height: number, ...objects: GameObject[]): GameCanvas
 ```
 
-- `add(...objects: GameObject[]): void` - 게임 오브젝트를 추가합니다.
-- `remove(): void` - 게임 캔버스를 제거합니다.
-- `get width(): number` - 게임 캔버스의 너비를 가져옵니다.
-- `get height(): number` - 게임 캔버스의 높이를 가져옵니다.
-- `get left(): number` - 게임 캔버스의 왼쪽 좌표를 가져옵니다.
-- `get top(): number` - 게임 캔버스의 위쪽 좌표를 가져옵니다.
+- `add(...objects: GameObject[]): void` - Adds game objects to the canvas.
+- `remove(): void` - Removes the game canvas.
+- `get width(): number` - Returns the width of the game canvas.
+- `get height(): number` - Returns the height of the game canvas.
+- `get left(): number` - Returns the left coordinate of the game canvas.
+- `get top(): number` - Returns the top coordinate of the game canvas.
 
 ### `GameObject`
 
@@ -51,45 +51,49 @@ new GameCanvas(container: HTMLElement, width: number, height: number, ...objects
 new GameObject(x: number, y: number, ...children: GameObject[]): GameObject
 ```
 
-- `update(deltaTime: number): void` - 개발자가 게임 로직을 구현할 수 있는
-  메소드입니다.
-- `add(...children: GameObject[]): void` - 자식 게임 오브젝트를 추가합니다.
-- `remove(): void` - 게임 오브젝트를 제거합니다.
-- `get parent(): GameObject | undefined` - 게임 오브젝트의 부모를 가져옵니다.
-- `get children(): GameObject[]` - 게임 오브젝트의 자식들을 가져옵니다.
-- `get x(): number` - 게임 오브젝트의 x 좌표를 가져옵니다.
-- `set x(x: number): void` - 게임 오브젝트의 x 좌표를 설정합니다.
-- `get y(): number` - 게임 오브젝트의 y 좌표를 가져옵니다.
-- `set y(y: number): void` - 게임 오브젝트의 y 좌표를 설정합니다.
-- `get drawingOrder(): number` - 게임 오브젝트의 그리기 순서를 가져옵니다.
-- `set drawingOrder(drawingOrder: number): void` - 게임 오브젝트의 그리기 순서를
-  설정합니다.
-- `get scale(): number` - 게임 오브젝트의 크기를 가져옵니다.
-- `set scale(scale: number): void` - 게임 오브젝트의 크기를 설정합니다.
-- `get scaleX(): number` - 게임 오브젝트의 x 축 크기를 가져옵니다.
-- `set scaleX(scaleX: number): void` - 게임 오브젝트의 x 축 크기를 설정합니다.
-- `get scaleY(): number` - 게임 오브젝트의 y 축 크기를 가져옵니다.
-- `set scaleY(scaleY: number): void` - 게임 오브젝트의 y 축 크기를 설정합니다.
-- `get pivotX(): number` - 게임 오브젝트의 x 축 회전 중심점을 가져옵니다.
-- `set pivotX(pivotX: number): void` - 게임 오브젝트의 x 축 회전 중심점을
-  설정합니다.
-- `get pivotY(): number` - 게임 오브젝트의 y 축 회전 중심점을 가져옵니다.
-- `set pivotY(pivotY: number): void` - 게임 오브젝트의 y 축 회전 중심점을
-  설정합니다.
-- `get rotation(): number` - 게임 오브젝트의 회전 각도를 가져옵니다.
-- `set rotation(rotation: number): void` - 게임 오브젝트의 회전 각도를
-  설정합니다.
-- `get alpha(): number` - 게임 오브젝트의 투명도를 가져옵니다.
-- `set alpha(alpha: number): void` - 게임 오브젝트의 투명도를 설정합니다.
-- `addCollider(...colliders: Collider[]): void` - 게임 오브젝트에 충돌체를
-  추가합니다.
-- `checkCollisionWith(other: GameObject): boolean` - 다른 게임 오브젝트와
-  충돌했는지 확인합니다.
-- `checkCollisionWithPoint(x: number, y: number): boolean` - 지정한 좌표와
-  충돌했는지 확인합니다.
-- `drawColliders(color: number): void` - 게임 오브젝트의 충돌체를 그립니다.
+- `update(deltaTime: number): void` - A method for developers to implement game
+  logic.
+- `add(...children: GameObject[]): void` - Adds child game objects.
+- `remove(): void` - Removes the game object.
+- `get parent(): GameObject | undefined` - Returns the parent of this game
+  object.
+- `get children(): GameObject[]` - Returns the children of this game object.
+- `get x(): number` - Gets the x coordinate of the game object.
+- `set x(x: number): void` - Sets the x coordinate of the game object.
+- `get y(): number` - Gets the y coordinate of the game object.
+- `set y(y: number): void` - Sets the y coordinate of the game object.
+- `get drawingOrder(): number` - Gets the drawing order of the game object.
+- `set drawingOrder(drawingOrder: number): void` - Sets the drawing order of the
+  game object.
+- `get scale(): number` - Gets the scale of the game object.
+- `set scale(scale: number): void` - Sets the scale of the game object.
+- `get scaleX(): number` - Gets the x-axis scale of the game object.
+- `set scaleX(scaleX: number): void` - Sets the x-axis scale of the game object.
+- `get scaleY(): number` - Gets the y-axis scale of the game object.
+- `set scaleY(scaleY: number): void` - Sets the y-axis scale of the game object.
+- `get pivotX(): number` - Gets the x-axis rotation pivot point of the game
+  object.
+- `set pivotX(pivotX: number): void` - Sets the x-axis rotation pivot point of
+  the game object.
+- `get pivotY(): number` - Gets the y-axis rotation pivot point of the game
+  object.
+- `set pivotY(pivotY: number): void` - Sets the y-axis rotation pivot point of
+  the game object.
+- `get rotation(): number` - Gets the rotation angle of the game object.
+- `set rotation(rotation: number): void` - Sets the rotation angle of the game
+  object.
+- `get alpha(): number` - Gets the opacity of the game object.
+- `set alpha(alpha: number): void` - Sets the opacity of the game object.
+- `addCollider(...colliders: Collider[]): void` - Adds colliders to the game
+  object.
+- `checkCollisionWith(other: GameObject): boolean` - Checks if this game object
+  collides with another.
+- `checkCollisionWithPoint(x: number, y: number): boolean` - Checks if this game
+  object collides with a given point.
+- `drawColliders(color: number): void` - Draws the colliders of the game object.
 
-Example: https://kiwiengine.github.io/kiwiengine/collision-test.html
+Example:
+[Collision Test](https://kiwiengine.github.io/kiwiengine/collision-test.html)
 
 ### `AssetManager`
 
@@ -119,24 +123,24 @@ await AssetManager.load(sources: {
 }, onProgress?: (percent: number) => void)): void
 ```
 
-- `load(sources: { [id: string]: { type: "image" | "audio", src: string } }): void` -
-  이미지나 오디오를 로드합니다.
-- `load(sources: { [id: string]: { type: "spritesheet", src: string, atlas: { frames: { [frameId: string]: { x: number, y: number, w: number, h: number } }, animations: { [animationId: string]: string[] } } } }): void` -
-  스프라이트 시트를 로드합니다.
-- `load(sources: { [id: string]: { type: "spine", atlas: string, skel?: string, json?: string, png: Record<string, string> | string } }): void` -
-  스파인 애니메이션을 로드합니다.
+- `load(sources: { [id: string]: { type: "image" | "audio", src: string } }): void`\
+  Loads images or audio.
+- `load(sources: { [id: string]: { type: "spritesheet", src: string, atlas: { frames: { [frameId: string]: { x: number, y: number, w: number, h: number } }, animations: { [animationId: string]: string[] } } } }): void`\
+  Loads sprite sheets.
+- `load(sources: { [id: string]: { type: "spine", atlas: string, skel?: string, json?: string, png: Record<string, string> | string } }): void`\
+  Loads Spine animations.
 
 ### `Sprite`
 
-스프라이트는 이미지를 화면에 표시하는 게임 오브젝트입니다.
+A sprite is a game object that displays an image on the screen.
 
 ```typescript
 new Sprite(x: number, y: number, assetId: string): Sprite
 ```
 
-- `remove(): void` - 스프라이트를 화면에서 제거합니다.
+- `remove(): void` - Removes the sprite from the screen.
 
-Example: https://kiwiengine.github.io/kiwiengine/sprite-test.html
+Example: [Sprite Test](https://kiwiengine.github.io/kiwiengine/sprite-test.html)
 
 ### `SpriteAnimation`
 
@@ -144,9 +148,10 @@ Example: https://kiwiengine.github.io/kiwiengine/sprite-test.html
 new SpriteAnimation(x: number, y: number, assetId: string, animation: string, fps: number): SpriteAnimation
 ```
 
-- `remove(): void` - 스프라이트 애니메이션을 화면에서 제거합니다.
+- `remove(): void` - Removes the sprite animation from the screen.
 
-Example: https://kiwiengine.github.io/kiwiengine/sprite-animation-test.html
+Example:
+[Sprite Animation Test](https://kiwiengine.github.io/kiwiengine/sprite-animation-test.html)
 
 ### `SpineAnimation`
 
@@ -159,14 +164,14 @@ new SpineAnimation(x: number, y: number, assetId: string, options: {
 }): SpineAnimation
 ```
 
-- `set skin(skin: string): void` - 스파인 애니메이션의 스킨을 설정합니다.
-- `get skin(): string` - 스파인 애니메이션의 스킨을 가져옵니다.
-- `set animation(animation: string): void` - 스파인 애니메이션의 애니메이션을
-  설정합니다.
-- `get animation(): string` - 스파인 애니메이션의 애니메이션을 가져옵니다.
-- `remove(): void` - 스파인 애니메이션을 화면에서 제거합니다.
+- `set skin(skin: string): void` - Sets the skin of the Spine animation.
+- `get skin(): string` - Gets the skin of the Spine animation.
+- `set animation(animation: string): void` - Sets the animation of the Spine
+  animation.
+- `get animation(): string` - Gets the animation of the Spine animation.
+- `remove(): void` - Removes the Spine animation from the screen.
 
-Example: https://kiwiengine.github.io/kiwiengine/spine-test.html
+Example: [Spine Test](https://kiwiengine.github.io/kiwiengine/spine-test.html)
 
 ### `Audio`
 
@@ -174,16 +179,16 @@ Example: https://kiwiengine.github.io/kiwiengine/spine-test.html
 new Audio(assetId: string, volume: number): Audio
 ```
 
-- `playOnce(): void` - 오디오를 한 번 재생합니다.
-- `playLoop(): void` - 오디오를 반복 재생합니다.
-- `stop(): void` - 오디오를 정지합니다.
-- `pause(): void` - 오디오를 일시 정지합니다.
-- `resume(): void` - 오디오를 재개합니다.
-- `set volume(volume: number): void` - 오디오의 볼륨을 설정합니다.
-- `get volume(): number` - 오디오의 볼륨을 가져옵니다.
-- `remove(): void` - 오디오를 제거합니다.
+- `playOnce(): void` - Plays the audio once.
+- `playLoop(): void` - Plays the audio in a loop.
+- `stop(): void` - Stops the audio.
+- `pause(): void` - Pauses the audio.
+- `resume(): void` - Resumes the audio.
+- `set volume(volume: number): void` - Sets the volume of the audio.
+- `get volume(): number` - Gets the volume of the audio.
+- `remove(): void` - Removes the audio.
 
-Example: https://kiwiengine.github.io/kiwiengine/audio-test.html
+Example: [Audio Test](https://kiwiengine.github.io/kiwiengine/audio-test.html)
 
 ### `InputManager`
 
@@ -193,24 +198,24 @@ InputManager.onKeyDown((key: string) => {
 });
 ```
 
-- `onMouseDown(callback: (x: number, y: number) => void): void` - 마우스 버튼이
-  눌렸을 때 호출될 콜백을 등록합니다.
-- `onMouseMove(callback: (x: number, y: number) => void): void` - 마우스가
-  움직일 때 호출될 콜백을 등록합니다.
-- `onMouseUp(callback: (x: number, y: number) => void): void` - 마우스 버튼이
-  떼어졌을 때 호출될 콜백을 등록합니다.
-- `onTouchStart(callback: (x: number, y: number) => void): void` - 터치가 시작될
-  때 호출될 콜백을 등록합니다.
-- `onTouchMove(callback: (x: number, y: number) => void): void` - 터치가 움직일
-  때 호출될 콜백을 등록합니다.
-- `onTouchEnd(callback: (x: number, y: number) => void): void` - 터치가 끝날 때
-  호출될 콜백을 등록합니다.
-- `onKeyDown(callback: (key: string) => void): void` - 키가 눌렸을 때 호출될
-  콜백을 등록합니다.
-- `onKeyUp(callback: (key: string) => void): void` - 키가 떼어졌을 때 호출될
-  콜백을 등록합니다.
+- `onMouseDown(callback: (x: number, y: number) => void): void` - Registers a
+  callback for when the mouse button is pressed.
+- `onMouseMove(callback: (x: number, y: number) => void): void` - Registers a
+  callback for when the mouse moves.
+- `onMouseUp(callback: (x: number, y: number) => void): void` - Registers a
+  callback for when the mouse button is released.
+- `onTouchStart(callback: (x: number, y: number) => void): void` - Registers a
+  callback for when a touch starts.
+- `onTouchMove(callback: (x: number, y: number) => void): void` - Registers a
+  callback for when a touch moves.
+- `onTouchEnd(callback: (x: number, y: number) => void): void` - Registers a
+  callback for when a touch ends.
+- `onKeyDown(callback: (key: string) => void): void` - Registers a callback for
+  when a key is pressed.
+- `onKeyUp(callback: (key: string) => void): void` - Registers a callback for
+  when a key is released.
 - `onWindowResize(callback: (width: number, height: number) => void): void` -
-  창의 크기가 변경될 때 호출될 콜백을 등록합니다.
+  Registers a callback for when the window is resized.
 
 ### `PhysicsWorld`
 
@@ -218,7 +223,8 @@ InputManager.onKeyDown((key: string) => {
 new PhysicsWorld(x: number, y: number, objects: PhysicsObject[]): PhysicsWorld
 ```
 
-Example: https://kiwiengine.github.io/kiwiengine/physics-test.html
+Example:
+[Physics Test](https://kiwiengine.github.io/kiwiengine/physics-test.html)
 
 ### `PhysicsObject`
 
@@ -226,17 +232,20 @@ Example: https://kiwiengine.github.io/kiwiengine/physics-test.html
 new PhysicsObject(x: number, y: number, rigidbody: RigidBody, ...children: GameObject[]): PhysicsObject
 ```
 
-- `set isStatic(isStatic: boolean): void` - 물리 오브젝트의 정적 여부를
-  설정합니다.
-- `get isStatic(): boolean` - 물리 오브젝트의 정적 여부를 가져옵니다.
-- `applyForce(x: number, y: number): void` - 물리 오브젝트에 힘을 가합니다.
+- `set isStatic(isStatic: boolean): void` - Sets whether the physics object is
+  static.
+- `get isStatic(): boolean` - Gets whether the physics object is static.
+- `applyForce(x: number, y: number): void` - Applies force to the physics
+  object.
 
-Example: https://kiwiengine.github.io/kiwiengine/physics-test.html
+Example:
+[Physics Test](https://kiwiengine.github.io/kiwiengine/physics-test.html)
 
-## 라이센스
+## License
 
 [MIT](LICENSE)
 
-## 피드백
+## Feedback
 
-피드백은 [이슈](https://github.com/kiwiengine/kiwiengine/issues)에 남겨주세요.
+Please leave feedback in
+[Issues](https://github.com/kiwiengine/kiwiengine/issues).
