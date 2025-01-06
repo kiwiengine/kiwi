@@ -1,6 +1,6 @@
-# KiwiEngine
+# Kiwi Engine
 
-KiwiEngine is a simple and lightweight web game engine.
+Kiwi Engine is a simple and lightweight web game engine.
 
 ## Installation
 
